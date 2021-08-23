@@ -1,12 +1,9 @@
-import logging
 import time
 
 from rubix_mqtt.mqtt import MqttClientBase
 
 from rubix.store import update_store
 from rubix.utils.singleton import Singleton
-
-logger = logging.getLogger(__name__)
 
 
 class MqttClient(MqttClientBase, metaclass=Singleton):
@@ -31,5 +28,4 @@ class MqttClient(MqttClientBase, metaclass=Singleton):
                     time.sleep(0.01)
                 else:
                     print(f'Failed to publish value: {payload}, on topic: {topic}')
-                    logger.error(f'Failed to publish value: {payload}, on topic: {topic}')
                     return

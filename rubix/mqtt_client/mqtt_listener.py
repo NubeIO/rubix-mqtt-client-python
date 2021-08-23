@@ -17,10 +17,11 @@ class MqttListener(metaclass=Singleton):
     def start(self):
         from rubix.mqtt_client.mqtt_client import MqttClient
         mqtt_client = MqttClient()
-        subscribe_topics: List[str] = [f'{self.mqtt_setting.client_id}/+/+/+/+/+/rubix/points/value/points']
+        subscribe_topics: List[str] = [f'{self.mqtt_setting.client_id}/+/+/+/+/+/rubix/points/value/points',
+                                       f'{self.mqtt_setting.client_id}/+/+/+/+/+/rubix/points/value/schedules']
         mqtt_client.start(self.__mqtt_setting, subscribe_topics, self.__callback)
 
     @staticmethod
     def status():
-        from mrb.mqtt import MqttClient
+        from rubix.mqtt_client.mqtt_client import MqttClient
         return MqttClient().status()

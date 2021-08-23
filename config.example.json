@@ -1,7 +1,6 @@
 {
   "mqtt": {
     "enabled": true,
-    "master": false,
     "name": "mqtt",
     "host": "localhost",
     "port": 1883,
