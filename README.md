@@ -1,20 +1,17 @@
 # rubix-mqtt-client
 
 ___
-
-### Config
-
-#### Example
+### Example
 
 ```bash
-cp config.example.json config/config.json
+cp config.example.json config.json
 
 python example.py
 ```
 
 ---
 
-#### MQTT responses
+### MQTT responses
 
 ##### <kbd>method</kbd> `rubix.rubix_mqtt.get_mqtt_responses()`
 Get mqtt responses
@@ -46,7 +43,7 @@ return {
 
 ---
 
-#### Points
+### Points
 
 #### <kbd>method</kbd> `rubix.rubix_point.get_points()`
 Get points
@@ -83,13 +80,13 @@ return [
 ```
 
 ---
-#### Point value
+### Point value
 
-#### <kbd>method</kbd> `rubix.rubix_point.update_point_value(device_id, uuid, priority, value)`
-Update point value
+#### <kbd>method</kbd> `rubix.rubix_point.write_point_value(device_id, uuid, priority, value)`
+Write point value
 
 ---
-#### Schedules
+### Schedules
 
 #### <kbd>method</kbd> `rubix.rubix_schedule.get_schedule()`
 Get schedules
@@ -124,5 +121,73 @@ return [
     ...
 ]
 ```
+
+---
+### Schedule value
+
+#### <kbd>method</kbd> `rubix.rubix_schedule.write_schedule_value_by_uuid(device_id, uuid, payload)`
+Write schedule value by uuid
+
+#### <kbd>method</kbd> `rubix.rubix_schedule.write_schedule_value_by_name(device_id, name, payload)`
+Write schedule value by name
+
+```bash
+payload = {
+    "events": {
+        "QhovV9c2xh4xh5SDT3NBQ5": {
+            "name": "TRAINING EVENT",
+            "dates": [
+                {
+                    "start": "2021-08-23T23:15:00.000Z",
+                    "end": "2021-08-24T00:15:00.000Z"
+                }
+            ],
+            "value": 20,
+            "color": ""
+        }
+    },
+    "weekly": {
+        "cjuVMsaXUvgpYYsmVA5tv7": {
+            "name": "WEEKLY TRAINING",
+            "days": [
+                "sunday",
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday"
+            ],
+            "start": "23:30",
+            "end": "00:00",
+            "value": 11,
+            "color": "#d0021b"
+        }
+    },
+    "holiday": {
+        "UFckPkfDGVzUzsa7Qhebsb": {
+            "id": "UFckPkfDGVzUzsa7Qhebsb",
+            "name": "HOLIDAY TEST",
+            "color": {
+                "dispatchConfig": null,
+                "_targetInst": null,
+                "nativeEvent": null,
+                "type": null,
+                "target": null,
+                "currentTarget": null,
+                "eventPhase": null,
+                "bubbles": null,
+                "cancelable": null,
+                "timeStamp": null,
+                "defaultPrevented": null,
+                "isTrusted": null,
+                "_dispatchListeners": null,
+                "_dispatchInstances": null
+            },
+            "date": "08-24",
+            "value": 15
+        }
+    }
+}
+```
+---
 
 

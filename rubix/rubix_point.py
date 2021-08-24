@@ -20,8 +20,8 @@ def get_points_by_device_id(device_id: str) -> List:
     return []
 
 
-def update_point_value(device_uuid: str, uuid: str, priority: int, value: float):
-    device: Response = Store().get_by_device_id(device_uuid)
+def write_point_value(device_id: str, uuid: str, priority: int, value: float):
+    device: Response = Store().get_by_device_id(device_id)
     if not device:
         return
     topic: str = f'{device.client_id}/{device.site_id}/{device.device_id}/rubix/points/listen/cov/uuid/{uuid}'
