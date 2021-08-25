@@ -14,14 +14,14 @@ class MqttClient(MqttClientBase, metaclass=Singleton):
     def _on_message(self, client, userdata, message):
         update_store(message)
 
-    def publish_value(self, topic: str, payload: str):
+    def publish_value(self, topic: str, payload: str, retain: bool = True):
         if not self.config:
             return
         timeout: int = self.config.timeout
         start_time: float = time.time()
         while True:
             if self.status():
-                self.client.publish(topic, payload, self.config.qos)
+                self.client.publish(topic, payload, qos=self.config.qos, retain=retain)
                 return
             else:
                 if time.time() - start_time <= timeout:

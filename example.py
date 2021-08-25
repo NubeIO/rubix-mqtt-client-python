@@ -88,7 +88,7 @@ while True:
     Get Mqtt Responses
     """
     mqtt_responses = get_mqtt_responses()
-    # print('MQTT RESPONSES :', mqtt_responses)
+    print('MQTT RESPONSES :', mqtt_responses)
     if mqtt_responses:
         device_id = list(mqtt_responses.keys())[0]
         """
@@ -108,7 +108,7 @@ while True:
             """
             Write point value
             """
-            print(f'Write point value (device_id:{device_id} uuid:{uuid}, priority:{priority}, value:{value}))')
+            print(f'Write point value (device_id:{device_id}, uuid:{uuid}, priority:{priority}, value:{value}))')
             write_point_value(device_id, uuid, priority, value)
         """
         Get schedules
@@ -126,14 +126,14 @@ while True:
             """
             uuid: str = device_schedules[0].get('uuid')
             payload: dict = generate_schedule_value_payload()
-            print(f'Write schedule value by uuid (device_id:{device_id} uuid:{uuid}, payload:{payload})')
+            print(f'Write schedule value by uuid (device_id:{device_id}, uuid:{uuid}, payload:{payload})')
             write_schedule_value_by_uuid(device_id, uuid, payload)
             """
             Write schedule value by name
             """
             name: str = device_schedules[0].get('name')
             payload: dict = generate_schedule_value_payload()
-            print(f'Write schedule value by name (device_id:{device_id} uuid:{uuid}, payload:{payload})')
+            print(f'Write schedule value by name (device_id:{device_id}, uuid:{uuid}, payload:{payload})')
             write_schedule_value_by_name(device_id, name, payload)
         break
     sleep(20)
