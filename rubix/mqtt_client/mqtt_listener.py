@@ -7,7 +7,6 @@ from rubix.utils.singleton import Singleton
 class MqttListener(metaclass=Singleton):
     def __init__(self, mqtt_setting: MqttSetting = MqttSetting(), callback: Callable = None):
         self.__mqtt_setting: MqttSetting = mqtt_setting
-        self.__mqtt_setting.retain = False
         self.__callback: Callable = callback
 
     @property
